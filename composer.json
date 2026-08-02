@@ -1,0 +1,26 @@
+{
+    "name": "zana/events",
+    "description": "Event dispatcher and listener support for Zana applications",
+    "type": "library",
+    "keywords": ["zana", "events", "event", "dispatcher"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zana\\Events\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zana\\Events\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
+
