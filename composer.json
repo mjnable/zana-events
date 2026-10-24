@@ -1,14 +1,21 @@
 {
-    "name": "zana/events",
-    "description": "Event dispatcher and listener support for Zana applications",
+    "name": "mj-zana/events",
+    "description": "PSR-14 event dispatcher with lazily resolved listeners for Zana applications",
     "type": "library",
-    "keywords": ["zana", "events", "event", "dispatcher"],
+    "keywords": ["zana", "events", "event-dispatcher", "psr-14", "listeners"],
     "license": "MIT",
     "require": {
-        "php": "^8.1"
+        "php": "^8.5",
+        "mj-zana/core": "^2.0",
+        "psr/container": "^2.0",
+        "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.5"
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5"
+    },
+    "provide": {
+        "psr/event-dispatcher-implementation": "1.0"
     },
     "autoload": {
         "psr-4": {
@@ -18,9 +25,21 @@
     "autoload-dev": {
         "psr-4": {
             "Zana\\Events\\Tests\\": "tests/"
-        }
+        },
+        "files": ["tests/Fixtures.php"]
+    },
+    "repositories": [
+        { "type": "path", "url": "../zana-container", "options": { "symlink": true, "versions": { "mj-zana/container": "2.0.0" } } },
+        { "type": "path", "url": "../zana-configuration", "options": { "symlink": true, "versions": { "mj-zana/configuration": "2.0.0" } } },
+        { "type": "path", "url": "../zana-core", "options": { "symlink": true, "versions": { "mj-zana/core": "2.0.0" } } }
+    ],
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
-
